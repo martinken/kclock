@@ -1,0 +1,81 @@
+body {
+  padding: 0px;
+  color: #FFFFFF;
+  background: #3f4c6b;
+  margin: 0px;
+  width: 800px;
+  height: 480;
+}
+
+div.bigTime {
+  font: 200px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+table.weatherTable {
+  font: 40px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #FFFFFF;
+  display: table;
+  width: 100%;
+  height: 80px;
+  text-align: right;
+}
+
+td.weatherData {
+  width: 100%;
+  text-align: right;
+  vertical-align: middle;
+}
+
+a.weatherData {
+  font: 40px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #FFFFFF;
+  display: block;
+  text-align: right;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+td.smallDate {
+  font: 40px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #FFFFFF;
+  width: 30%;
+  height: 80px;
+  text-align: left;
+  padding-left: 20px;
+}
+
+td.smallTime {
+  padding-right: 20px;
+}
+
+a.smallTime {
+  font: 40px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #FFFFFF;
+  width: 100%;
+  display: table;
+  text-align: right;
+  text-decoration: none;
+  padding-right: 20px;
+}
+
+table.forecastTable {
+  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-top: 20px;
+  color: #FFFFFF;
+  display: table;
+  width: 100%;
+  text-align: center;
+  height: 200px;
+}
+
+div.nearTermForecast {
+  font: 32px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-top: 60px;
+  color: #FFFFFF;
+  display: block;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+}

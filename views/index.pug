@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  div(class='bigTime')#time
+  div(class='nearTermForecast')#todayWeather
+  table(class='weatherTable')
+    tr(style={width: '100%'})
+      td(class='smallDate')#date
+      td(class='weatherData')
+        a(class='weatherData' href='/weather')#weatherCurrent
+  script(type='text/javascript').
+    var latestTemp;
+    var latestCondition;
+    function updateTime() {
+      var d = new Date();
+      document.getElementById('time').innerHTML =
+        `${(d.getHours() + 11)%12 + 1}:${Math.floor(d.getMinutes()/10)}${d.getMinutes()%10}`;
+      document.getElementById('date').innerHTML =
+        `${d.getFullYear()}-${Math.floor((d.getMonth()+1)/10)}${(d.getMonth()+1)%10}-${Math.floor(d.getDate()/10)}${d.getDate()%10}`;
+    }
+    updateTime();
+    setInterval("updateTime()", 5000);
+    function getWeather() {
+      fetch('/weatherdata?requestType=forecast10day')
+      .then((resp) => resp.json())
+      .then(function(data) {
+        document.getElementById('todayWeather').innerHTML =
+          data.txt_forecast.forecastday[0].fcttext;
+      });
+    }
+    getWeather();
+    function getWeatherConditions() {
+      fetch('/weatherdata?requestType=conditions')
+      .then((resp) => resp.json())
+      .then(function(data) {
+        latestTemp = `${data.temp_f}\xB0 `;
+        latestCondition = data.weather;
+        document.getElementById('weatherCurrent').innerHTML =
+          `${latestTemp} ${latestCondition}`;
+      });
+    }
+    getWeatherConditions();

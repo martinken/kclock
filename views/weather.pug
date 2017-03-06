@@ -1,0 +1,61 @@
+extends layout
+
+block content
+  table(class='forecastTable')
+    tr(style={width: '100%'})
+      each val in [0, 1, 2, 3, 4, 5, 6]
+        td(id="day" + val)
+    tr(style={width: '100%'})
+      each val in [0, 1, 2, 3, 4, 5, 6]
+        td
+          image(id="icon" + val)
+    tr(style={width: '100%'})
+      each val in [0, 1, 2, 3, 4, 5, 6]
+        td(id="temp" + val)
+    tr(style={width: '100%'})
+      each val in [0, 1, 2, 3, 4, 5, 6]
+        td(id="pop" + val)
+  div(class='nearTermForecast')#nearTermForecast
+  table(class='bottom2Table' style={width: '100%'})
+    tr(style={width: '100%'})
+      td(class='smallDate')#date
+      td(class='smallTime')
+        a(class='smallTime' href='/')#time
+  script(type='text/javascript').
+    function updateTime() {
+      var d = new Date();
+      document.getElementById('time').innerHTML =
+        `${(d.getHours() + 11)%12 + 1}:${Math.floor(d.getMinutes()/10)}${d.getMinutes()%10}`;
+      document.getElementById('date').innerHTML =
+        `${d.getFullYear()}-${Math.floor((d.getMonth()+1)/10)}${(d.getMonth()+1)%10}-${Math.floor(d.getDate()/10)}${d.getDate()%10}`;
+    }
+    updateTime();
+    function getWeather() {
+      fetch('/weatherdata?requestType=forecast10day')
+      .then((resp) => resp.json())
+      .then(function(data) {
+        document.getElementById('nearTermForecast').innerHTML =
+          `Today: ${data.txt_forecast.forecastday[0].fcttext}`;
+        for (var i = 0; i < 7; ++i) {
+          document.getElementById(`icon${i}`).src =
+            data.simpleforecast.forecastday[i].icon_url;
+          document.getElementById(`temp${i}`).innerHTML =
+            `${data.simpleforecast.forecastday[i].high.fahrenheit} / ${data.simpleforecast.forecastday[i].low.fahrenheit}`;
+          document.getElementById(`pop${i}`).innerHTML =
+            `${data.simpleforecast.forecastday[i].pop}%`;
+          document.getElementById(`day${i}`).innerHTML =
+            data.simpleforecast.forecastday[i].date.weekday_short;
+        }
+      });
+    }
+    function getWeatherConditions() {
+      fetch('/weatherdata?requestType=conditions')
+      .then((resp) => resp.json())
+      .then(function(data) {
+        document.getElementById('weatherCurrentConditions').innerHTML =
+          `${data.temp_f} F `;
+        document.getElementById('weatherCurrentForecast').innerHTML =
+          data.weather;
+      });
+    }
+    getWeather();
