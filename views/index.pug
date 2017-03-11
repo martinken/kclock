@@ -29,6 +29,7 @@ block content
       });
     }
     getWeather();
+    setInterval("getWeather()", 30 * 60 * 1000);
     function getWeatherConditions() {
       fetch('/weatherdata?requestType=conditions')
       .then((resp) => resp.json())
@@ -40,3 +41,4 @@ block content
       });
     }
     getWeatherConditions();
+    setInterval("getWeatherConditions()", 10 * 60 * 1000);

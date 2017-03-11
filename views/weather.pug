@@ -30,12 +30,13 @@ block content
         `${d.getFullYear()}-${Math.floor((d.getMonth()+1)/10)}${(d.getMonth()+1)%10}-${Math.floor(d.getDate()/10)}${d.getDate()%10}`;
     }
     updateTime();
+    setInterval("updateTime()", 5000);
     function getWeather() {
       fetch('/weatherdata?requestType=forecast10day')
       .then((resp) => resp.json())
       .then(function(data) {
         document.getElementById('nearTermForecast').innerHTML =
-          `Today: ${data.txt_forecast.forecastday[0].fcttext}`;
+          data.txt_forecast.forecastday[0].fcttext;
         for (var i = 0; i < 7; ++i) {
           document.getElementById(`icon${i}`).src =
             data.simpleforecast.forecastday[i].icon_url;
@@ -48,14 +49,5 @@ block content
         }
       });
     }
-    function getWeatherConditions() {
-      fetch('/weatherdata?requestType=conditions')
-      .then((resp) => resp.json())
-      .then(function(data) {
-        document.getElementById('weatherCurrentConditions').innerHTML =
-          `${data.temp_f} F `;
-        document.getElementById('weatherCurrentForecast').innerHTML =
-          data.weather;
-      });
-    }
     getWeather();
+    setInterval("getWeather()",  20 * 60 * 1000);

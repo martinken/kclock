@@ -5,22 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-// client.conditions(opts, function(err, data) {
-//   if (err) throw err;
-//   else console.log(data);
-// });
-
-// client.hourly10day(opts, function(err, data) {
-//   if (err) throw err;
-//   else console.log(data);
-// });
-
 var index = require('./routes/index');
 var weather = require('./routes/weather');
 var weatherdata = require('./routes/weatherdata');
 
 var app = express();
-// app.locals.moment = require('moment');
 
 var Wunderground = require('node-weatherunderground');
 app.locals.wunderground = new Wunderground('');
