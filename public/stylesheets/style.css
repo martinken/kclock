@@ -1,14 +1,14 @@
 body {
   padding: 0px;
   color: #FFFFFF;
-  background: #3f4c6b;
+  background: #222838;
   margin: 0px;
   width: 800px;
   height: 480;
 }
 
 div.bigTime {
-  font: 240px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 230px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: #FFFFFF;
   text-align: center;
 }
@@ -18,7 +18,7 @@ table.weatherTable {
   color: #FFFFFF;
   display: table;
   width: 100%;
-  height: 80px;
+  height: 60px;
   text-align: right;
 }
 
@@ -42,7 +42,7 @@ td.smallDate {
   font: 40px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: #FFFFFF;
   width: 35%;
-  height: 80px;
+  height: 50px;
   text-align: left;
   padding-left: 20px;
 }
@@ -63,21 +63,21 @@ a.smallTime {
 
 table.forecastTable {
   font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
-  padding-top: 20px;
-  padding-bottom: 40px;
+  padding-top: 30px;
+  padding-bottom: 60px;
   color: #FFFFFF;
   display: table;
   width: 100%;
   text-align: center;
-  height: 200px;
+  height: 220px;
 }
 
 div.nearTermForecast {
   font: 32px "Lucida Grande", Helvetica, Arial, sans-serif;
-  padding-top: 20px;
+  padding-top: 0px;
   color: #FFFFFF;
   display: block;
-  height: 90px;
+  height: 150px;
   text-align: center;
   padding-left: 20px;
   padding-right: 20px;

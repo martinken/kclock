@@ -4,12 +4,12 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   console.log(req.query.requestType);
   var requestName = null;
-  var requestFrequency = 1000 * 60 * 60; // one hour
+  var requestFrequency = 1000 * 60 * 120; // two hours
   switch (req.query.requestType) {
     default:
     case 'conditions':
       requestName = 'conditions';
-      requestFrequency = 1000 * 60 * 10;
+      requestFrequency = 1000 * 60 * 10; // ten minutes
       break;
     case 'forecast10day':
       requestName = 'forecast10day';
